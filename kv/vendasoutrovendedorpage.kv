@@ -1,0 +1,45 @@
+<VendasOutroVendedorPage>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {"right": 0.85, "top": 0.95}
+            size_hint: 0.7, 0.2
+            text: "Total de Vendas: R$1"
+            id: label_total_vendas
+            markup: True
+        ScrollView:
+            pos_hint: {'right': 1,"top": 0.75}
+            size_hint: 1, 0.63
+            GridLayout:
+                cols: 1
+                spacing: 2, 2
+                id: lista_vendas
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "90dp"
+                row_force_default: True
+
+        # Botao voltar
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006d7e")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                on_release: app.sair_todasasvendas("listarvendedorespage")
+                source: "icones/voltar.png"
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
